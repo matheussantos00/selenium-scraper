@@ -26,18 +26,19 @@ class Scrape:
         driver.switch_to.window(driver.window_handles[1])
         print(driver.current_window_handle)
         time.sleep(5)
+        data = login.Login()
         id = driver.find_element_by_id('identifierId')
-        id.send_keys('EMAIL')
+        id.send_keys(data.usuario['email'])
         time.sleep(5)
         prox = driver.find_element_by_id('identifierNext')
         prox.click()
-        time.sleep(5)
+        time.sleep(10)
         password = driver.find_element_by_name('password')
-        password.send_keys('PASSWORD')
+        password.send_keys(data.usuario['senha'])
         time.sleep(5)
         prox = driver.find_element_by_id('passwordNext')
         prox.click()
-
+        driver.quit()
 
 if __name__ != 'main':
     app = Scrape()
